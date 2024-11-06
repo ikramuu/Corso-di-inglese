@@ -1,301 +1,133 @@
-import React, { useState } from 'react';
-import { 
-  Bell, 
-  BookOpen, 
-  Calendar, 
-  CheckCircle, 
-  Clock, 
-  Download, 
-  MessageCircle, 
-  Star, 
-  Users,
-  Zap,
-  Globe,
-  Target,
-  Sparkles
-} from 'lucide-react';
-import { Alert } from "@/components/ui/alert";
-
-const LandingPage = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: ''
-  });
-  const [showSuccess, setShowSuccess] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setShowSuccess(true);
-    setFormData({ firstName: '', lastName: '', email: '' });
-    setTimeout(() => setShowSuccess(false), 3000);
-  };
-
-  const testimonials = [
-    {
-      name: "Marco Rossi",
-      text: "INCREDIBILE! Ho imparato più inglese in 3 mesi qui che in 3 anni di scuola! 🚀",
-      role: "Professionista",
-      rating: 5
-    },
-    {
-      name: "Laura Bianchi",
-      text: "Finalmente un metodo che funziona! IELTS superato con 7.5! ⭐",
-      role: "Studentessa",
-      rating: 5
-    },
-    {
-      name: "Giuseppe Verdi",
-      text: "Gli insegnanti sono FENOMENALI! Ora parlo inglese con fiducia! 💪",
-      role: "Imprenditore",
-      rating: 5
-    }
-  ];
-
-  const features = [
-    {
-      icon: <Globe className="h-8 w-8" />,
-      title: "INSEGNANTI TOP",
-      description: "Madrelingua esperti pronti 24/7!"
-    },
-    {
-      icon: <Target className="h-8 w-8" />,
-      title: "RISULTATI GARANTITI",
-      description: "Progressi visibili in 30 giorni"
-    },
-    {
-      icon: <Sparkles className="h-8 w-8" />,
-      title: "METODO INNOVATIVO",
-      description: "Impara 3 volte più velocemente"
-    },
-    {
-      icon: <Zap className="h-8 w-8" />,
-      title: "ENERGIA PURA",
-      description: "Lezioni dinamiche e coinvolgenti"
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <div className="relative bg-black text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-700 to-black"></div>
-        <div className="relative max-w-7xl mx-auto px-4 py-32 sm:px-6 lg:px-8">
-          <div className="text-center space-y-8">
-            <div className="animate-pulse inline-flex items-center px-4 py-2 rounded-full border-2 border-white">
-              <Zap className="h-4 w-4 mr-2" />
-              <span className="text-sm font-bold">1 MESE GRATIS - INIZIA ORA!</span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-black tracking-tight">
-              SPACCA L'INGLESE
-              <br />
-              <span className="text-3xl md:text-5xl font-bold">In Modo Rapido e Divertente</span>
-            </h1>
-            <p className="mt-6 max-w-2xl mx-auto text-xl font-medium">
-              Non il solito corso noioso. Un'esperienza di apprendimento ESPLOSIVA! 🚀
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a href="#prova-gratuita" className="transform transition-transform hover:scale-105 inline-flex items-center px-8 py-4 border-2 border-white text-lg font-bold rounded-full bg-white text-black hover:bg-gray-100">
-                INIZIA ORA
-                <Zap className="ml-2 h-5 w-5" />
-              </a>
-              <div className="flex items-center space-x-2 text-sm">
-                <Star className="h-5 w-5 fill-current" />
-                <span>4.9/5 su 1000+ recensioni</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Features Section */}
-      <div className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-black text-black">
-              PERCHÉ SIAMO DIFFERENTI
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
-            {features.map((feature, index) => (
-              <div key={index} className="group hover:scale-105 transition-transform duration-300 bg-black text-white p-8 rounded-3xl">
-                <div className="flex items-center justify-center h-16 w-16 rounded-full bg-white text-black mx-auto mb-6">
-                  {feature.icon}
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corso di Inglese Online</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="min-h-screen">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-content">
+                <div class="pulse-banner">
+                    <i data-lucide="zap"></i>
+                    <span>1 MESE GRATIS - INIZIA ORA!</span>
                 </div>
-                <h3 className="text-xl font-bold text-center mb-4">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-300 text-center">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Pricing Section */}
-      <div className="py-24 bg-black text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl font-black mb-8">
-              OFFERTA LANCIO 🔥
-            </h2>
-            <div className="text-6xl font-black mb-8">
-              €14,90
-              <span className="text-2xl font-normal">/mese</span>
-            </div>
-            <div className="space-y-6 text-lg">
-              <div className="flex items-center justify-center space-x-3">
-                <CheckCircle className="h-6 w-6" />
-                <span>1 mese di prova TOTALMENTE GRATUITO</span>
-              </div>
-              <div className="flex items-center justify-center space-x-3">
-                <CheckCircle className="h-6 w-6" />
-                <span>Accesso ILLIMITATO a tutte le lezioni</span>
-              </div>
-              <div className="flex items-center justify-center space-x-3">
-                <CheckCircle className="h-6 w-6" />
-                <span>Supporto 24/7 dai nostri SUPER prof</span>
-              </div>
-            </div>
-            <div className="mt-12">
-              <a href="#prova-gratuita" className="inline-flex items-center px-8 py-4 text-lg font-bold rounded-full bg-white text-black hover:bg-gray-100 transform transition-transform hover:scale-105">
-                ATTIVA LA PROVA GRATUITA
-                <Zap className="ml-2 h-5 w-5" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Testimonials */}
-      <div className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-black text-center text-black mb-16">
-            STUDENTI SUPER SODDISFATTI
-          </h2>
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="group hover:scale-105 transition-transform duration-300 bg-black text-white p-8 rounded-3xl">
-                <div className="flex items-center mb-6">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-6 w-6 text-white fill-current" />
-                  ))}
+                <h1>
+                    SPACCA L'INGLESE
+                    <br>
+                    <span>In Modo Rapido e Divertente</span>
+                </h1>
+                <p>Non il solito corso noioso. Un'esperienza di apprendimento ESPLOSIVA! 🚀</p>
+                <div class="hero-buttons">
+                    <a href="#prova-gratuita" class="cta-button">
+                        INIZIA ORA
+                        <i data-lucide="zap"></i>
+                    </a>
+                    <div class="rating">
+                        <i data-lucide="star"></i>
+                        <span>4.9/5 su 1000+ recensioni</span>
+                    </div>
                 </div>
-                <p className="text-lg mb-6">{testimonial.text}</p>
-                <div>
-                  <p className="font-bold text-xl">{testimonial.name}</p>
-                  <p className="text-gray-400">{testimonial.role}</p>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features">
+            <h2>PERCHÉ SIAMO DIFFERENTI</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="globe"></i>
+                    </div>
+                    <h3>INSEGNANTI TOP</h3>
+                    <p>Madrelingua esperti pronti 24/7!</p>
                 </div>
-              </div>
-            ))}
-          </div>
+                <!-- Altri feature cards qui... -->
+            </div>
         </div>
-      </div>
 
-      {/* Contact Form */}
-      <div id="prova-gratuita" className="py-24 bg-black text-white">
-        <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-black text-center mb-12">
-            INIZIA IL TUO VIAGGIO 🚀
-          </h2>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="firstName" className="block text-lg font-bold">
-                Nome
-              </label>
-              <input
-                type="text"
-                id="firstName"
-                value={formData.firstName}
-                onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                required
-                className="mt-2 block w-full rounded-lg border-2 border-white bg-transparent p-3 text-white placeholder-gray-400 focus:border-white focus:ring-white"
-              />
+        <!-- Pricing Section -->
+        <div class="pricing">
+            <div class="pricing-content">
+                <h2>OFFERTA LANCIO 🔥</h2>
+                <div class="price">
+                    €14,90
+                    <span>/mese</span>
+                </div>
+                <div class="benefits">
+                    <div class="benefit">
+                        <i data-lucide="check-circle"></i>
+                        <span>1 mese di prova TOTALMENTE GRATUITO</span>
+                    </div>
+                    <!-- Altri benefits qui... -->
+                </div>
+                <a href="#prova-gratuita" class="cta-button">
+                    ATTIVA LA PROVA GRATUITA
+                    <i data-lucide="zap"></i>
+                </a>
             </div>
-            <div>
-              <label htmlFor="lastName" className="block text-lg font-bold">
-                Cognome
-              </label>
-              <input
-                type="text"
-                id="lastName"
-                value={formData.lastName}
-                onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                required
-                className="mt-2 block w-full rounded-lg border-2 border-white bg-transparent p-3 text-white placeholder-gray-400 focus:border-white focus:ring-white"
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-lg font-bold">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                value={formData.email}
-                onChange={(e) => setFormData({...formData, email: e.target.value})}
-                required
-                className="mt-2 block w-full rounded-lg border-2 border-white bg-transparent p-3 text-white placeholder-gray-400 focus:border-white focus:ring-white"
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full flex justify-center items-center py-4 px-6 rounded-full text-lg font-bold bg-white text-black hover:bg-gray-100 transform transition-transform hover:scale-105"
-            >
-              INIZIA ORA
-              <Zap className="ml-2 h-5 w-5" />
-            </button>
-          </form>
-          {showSuccess && (
-            <Alert className="mt-6 border-2 border-white bg-transparent text-white">
-              🎉 FANTASTICO! Ti contatteremo prestissimo per iniziare questa avventura!
-            </Alert>
-          )}
         </div>
-      </div>
 
-      {/* Footer */}
-      <footer className="bg-white text-black">
-        <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="text-lg font-bold">
-                Contatti
-              </h3>
-              <div className="mt-4 space-y-2">
-                <p>support@corsoinglese.it</p>
-                <p>Tel: +39 02 1234567</p>
-              </div>
+        <!-- Testimonials Section -->
+        <div class="testimonials">
+            <h2>STUDENTI SUPER SODDISFATTI</h2>
+            <div class="testimonials-grid">
+                <!-- Testimonial cards qui... -->
             </div>
-            <div>
-              <h3 className="text-lg font-bold">
-                Link Utili
-              </h3>
-              <ul className="mt-4 space-y-2">
-                <li>
-                  <a href="#" className="hover:underline">
-                    FAQ
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:underline">
-                    Termini e Condizioni
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
         </div>
-      </footer>
+
+        <!-- Contact Form -->
+        <div id="prova-gratuita" class="contact-form">
+            <h2>INIZIA IL TUO VIAGGIO 🚀</h2>
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="firstName">Nome</label>
+                    <input type="text" id="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Cognome</label>
+                    <input type="text" id="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <button type="submit" class="submit-button">
+                    INIZIA ORA
+                    <i data-lucide="zap"></i>
+                </button>
+            </form>
+            <div id="success-message" class="success-message hidden">
+                🎉 FANTASTICO! Ti contatteremo prestissimo per iniziare questa avventura!
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-grid">
+                    <div class="footer-section">
+                        <h3>Contatti</h3>
+                        <p>support@corsoinglese.it</p>
+                        <p>Tel: +39 02 1234567</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Link Utili</h3>
+                        <ul>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Termini e Condizioni</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
-  );
-};
-
-export default LandingPage;
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
